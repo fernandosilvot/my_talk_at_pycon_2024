@@ -4,3 +4,4 @@ Pillow
 numpy
 langchain
 langchain-aws
+pydantic==1.10.12

@@ -25,7 +25,7 @@ pip install -r requirements.txt
 Para ejecutar el proyecto, simplemente corre el script principal:
 
 ```bash
-python main.py
+streamlit run main.py
 ```
 
 ## Contribuciones

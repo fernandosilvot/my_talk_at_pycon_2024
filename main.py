@@ -148,8 +148,8 @@ if option == "Inicio":
 
 elif option == "Procesamiento de Lenguaje":
     st.subheader("Procesamiento de Lenguaje")
-    model_id = "anthropic.claude-v2:1"
-    user_input = st.text_area("Introduce el texto para procesar", "", max_chars=1000)
+    model_id = "meta.llama3-70b-instruct-v1:0"
+    user_input = st.text_area("Introduce el texto para procesar")
     template = """
     Analiza el siguiente texto: {text}
     
@@ -176,7 +176,7 @@ elif option == "Procesamiento de Lenguaje":
     """
     if st.button("Enviar Texto"):
         if user_input:
-            st.write("Procesando con AWS Bedrock Claude v2...")
+            st.write("Procesando con AWS Bedrock LLama 3...")
             try:
                 bedrock_llm = BedrockLLM(
                     model_id=model_id,
@@ -199,21 +199,17 @@ elif option == "Procesamiento de Lenguaje":
             
 elif option == "Generacion de resumenes":
     st.subheader("Generación de Resúmenes")
-    model_id = "anthropic.claude-v2:1"
+    model_id = "meta.llama3-70b-instruct-v1:0"
     user_input = st.text_area("Introduce el texto para resumir", "")
     template = """
-    Resumen del texto: {text}
-    
-    1. Resumen:
-    Resume brevemente el contenido del texto.
-    
-    2. Tema Principal:
-    ¿Cuál es el tema central del texto?
+    Resume unicamente este texto: {text}, de la siguiente manera:
+    Resume brevemente el contenido del texto, dando puntos clave y omitiendo detalles innecesarios.
+
     
     """
     if st.button("Generar Resumen"):
         if user_input:
-            st.write("Procesando con AWS Bedrock Claude v2...")
+            st.write("Procesando con AWS Bedrock LLama 3...")
             try:
                 bedrock_llm = BedrockLLM(
                     model_id=model_id,
